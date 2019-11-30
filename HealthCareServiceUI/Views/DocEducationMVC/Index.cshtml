@@ -1,0 +1,23 @@
+﻿@model HealthCareServiceUI.Models.DocEducationModel
+
+@{
+    ViewBag.Title = "Doctor Profile";
+}
+<h2>Enter Education Profile</h2>
+<div class="container" style="width:400px; height:500px;">
+    @using (Html.BeginForm("Index", "DocEducationMVC", FormMethod.Post))
+    {
+        @Html.DropDownListFor(x => x.Doctor_id, ViewBag.doctor_list as SelectList, "---Select Doctor---", new { @class = "form-control" })
+
+        @Html.TextBoxFor(x => x.InstituteName, new { @class = "form-control", @placeholder = "Institute Name" })
+        @Html.TextBoxFor(x => x.Degree, new { @class = "form-control", @placeholder = "Degree" })
+        @Html.TextBoxFor(x => x.PassingYear, new { @class = "form-control", @placeholder = "Passing Year" })
+
+        <input type="submit" value="submit" class="btn btn-block btn-danger" />
+    }
+    <div>
+        @Html.ActionLink("Back to List", "IndexList")
+    </div>
+</div>
+
+

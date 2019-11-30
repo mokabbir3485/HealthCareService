@@ -1,0 +1,26 @@
+﻿@model HealthCareServiceUI.Models.BrandClass
+
+@{
+    ViewBag.Title = "Medicine Information";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    <h4>Medicine Brand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+
+    </dl>
+</div>
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Edit", "Edit", new { id = Model.Brand_id })</li>
+    <li>@Html.ActionLink("Back to List", "IndexList")</li>
+    <li>@Html.ActionLink("Add Medicine Generic", "AddIndex", "GenericMVC")</li>
+</ul>

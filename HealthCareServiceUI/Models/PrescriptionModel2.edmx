@@ -1,0 +1,1094 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HealthCareDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Brand_id" />
+          </Key>
+          <Property Name="Brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocEducation">
+          <Key>
+            <PropertyRef Name="Edu_id" />
+          </Key>
+          <Property Name="Edu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doctor_id" Type="int" Nullable="false" />
+          <Property Name="InstituteName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Degree" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassingYear" Type="nvarchar" MaxLength="50" />
+          <Property Name="Certificate" Type="image" />
+        </EntityType>
+        <EntityType Name="Doctor_P">
+          <Key>
+            <PropertyRef Name="Doctor_id" />
+          </Key>
+          <Property Name="Doctor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorFullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProfilePhoto" Type="image" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Drug">
+          <Key>
+            <PropertyRef Name="Drug_id" />
+          </Key>
+          <Property Name="Drug_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Generic_id" Type="int" Nullable="false" />
+          <Property Name="Brand_id" Type="int" Nullable="false" />
+          <Property Name="Strength" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Generic">
+          <Key>
+            <PropertyRef Name="Generic_id" />
+          </Key>
+          <Property Name="Generic_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenericName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient_P">
+          <Key>
+            <PropertyRef Name="Patient_id" />
+          </Key>
+          <Property Name="Patient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientFullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Height" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsMarried" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Presciption">
+          <Key>
+            <PropertyRef Name="Prescip_id" />
+          </Key>
+          <Property Name="Prescip_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patient_id" Type="int" Nullable="false" />
+          <Property Name="Doctor_id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="BP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Temp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="50" />
+          <Property Name="Visit_no" Type="int" />
+          <Property Name="NextDate" Type="date" />
+          <Property Name="Indication" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PresciptionDetail">
+          <Key>
+            <PropertyRef Name="PresDetail_id" />
+          </Key>
+          <Property Name="PresDetail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prescip_id" Type="int" Nullable="false" />
+          <Property Name="Drug_id" Type="int" Nullable="false" />
+          <Property Name="Doze" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfessionalDetails">
+          <Key>
+            <PropertyRef Name="Pro_id" />
+          </Key>
+          <Property Name="Pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doctor_id" Type="int" Nullable="false" />
+          <Property Name="Specialization" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SiteAdmin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsValid" Type="bit" />
+        </EntityType>
+        <EntityType Name="SitePatient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsValid" Type="bit" />
+        </EntityType>
+        <EntityType Name="SiteUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsValid" Type="bit" />
+          <Property Name="role_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_DocEducation_Doctor_P">
+          <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+          <End Role="DocEducation" Type="Self.DocEducation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor_P">
+              <PropertyRef Name="Doctor_id" />
+            </Principal>
+            <Dependent Role="DocEducation">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Drug_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Drug" Type="Self.Drug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Brand_id" />
+            </Principal>
+            <Dependent Role="Drug">
+              <PropertyRef Name="Brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Drug_Generic">
+          <End Role="Generic" Type="Self.Generic" Multiplicity="1" />
+          <End Role="Drug" Type="Self.Drug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generic">
+              <PropertyRef Name="Generic_id" />
+            </Principal>
+            <Dependent Role="Drug">
+              <PropertyRef Name="Generic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presciption_Doctor_P">
+          <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+          <End Role="Presciption" Type="Self.Presciption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor_P">
+              <PropertyRef Name="Doctor_id" />
+            </Principal>
+            <Dependent Role="Presciption">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presciption_Patient_P">
+          <End Role="Patient_P" Type="Self.Patient_P" Multiplicity="1" />
+          <End Role="Presciption" Type="Self.Presciption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient_P">
+              <PropertyRef Name="Patient_id" />
+            </Principal>
+            <Dependent Role="Presciption">
+              <PropertyRef Name="Patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresciptionDetail_Drug">
+          <End Role="Drug" Type="Self.Drug" Multiplicity="1" />
+          <End Role="PresciptionDetail" Type="Self.PresciptionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drug">
+              <PropertyRef Name="Drug_id" />
+            </Principal>
+            <Dependent Role="PresciptionDetail">
+              <PropertyRef Name="Drug_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresciptionDetail_Presciption">
+          <End Role="Presciption" Type="Self.Presciption" Multiplicity="1" />
+          <End Role="PresciptionDetail" Type="Self.PresciptionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presciption">
+              <PropertyRef Name="Prescip_id" />
+            </Principal>
+            <Dependent Role="PresciptionDetail">
+              <PropertyRef Name="Prescip_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfessionalDetails_Doctor_P">
+          <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+          <End Role="ProfessionalDetails" Type="Self.ProfessionalDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor_P">
+              <PropertyRef Name="Doctor_id" />
+            </Principal>
+            <Dependent Role="ProfessionalDetails">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrandName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DoctorFullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ProfilePhoto" Type="image" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="DOB" Type="date" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddGeneric" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GenericName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddPatient_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PatientFullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="Height" Type="nvarchar" Mode="In" />
+          <Parameter Name="Weight" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsMarried" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Doctor_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="displayBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayDocEducation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayDrug" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayGeneric" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayPatient_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayPresciption" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayPresciptionDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="displayProfessionalDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DoctorJoinTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DrugJoinTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PresciptionJoinTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Doctor_id" Type="int" Mode="In" />
+          <Parameter Name="DoctorFullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="DOB" Type="date" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="HealthCareDBModel1StoreContainer">
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocEducation" EntityType="Self.DocEducation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor_P" EntityType="Self.Doctor_P" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drug" EntityType="Self.Drug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Generic" EntityType="Self.Generic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient_P" EntityType="Self.Patient_P" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presciption" EntityType="Self.Presciption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresciptionDetail" EntityType="Self.PresciptionDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfessionalDetails" EntityType="Self.ProfessionalDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteAdmin" EntityType="Self.SiteAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SitePatient" EntityType="Self.SitePatient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteUser" EntityType="Self.SiteUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DocEducation_Doctor_P" Association="Self.FK_DocEducation_Doctor_P">
+            <End Role="Doctor_P" EntitySet="Doctor_P" />
+            <End Role="DocEducation" EntitySet="DocEducation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Drug_Brand" Association="Self.FK_Drug_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Drug" EntitySet="Drug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Drug_Generic" Association="Self.FK_Drug_Generic">
+            <End Role="Generic" EntitySet="Generic" />
+            <End Role="Drug" EntitySet="Drug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presciption_Doctor_P" Association="Self.FK_Presciption_Doctor_P">
+            <End Role="Doctor_P" EntitySet="Doctor_P" />
+            <End Role="Presciption" EntitySet="Presciption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presciption_Patient_P" Association="Self.FK_Presciption_Patient_P">
+            <End Role="Patient_P" EntitySet="Patient_P" />
+            <End Role="Presciption" EntitySet="Presciption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresciptionDetail_Drug" Association="Self.FK_PresciptionDetail_Drug">
+            <End Role="Drug" EntitySet="Drug" />
+            <End Role="PresciptionDetail" EntitySet="PresciptionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresciptionDetail_Presciption" Association="Self.FK_PresciptionDetail_Presciption">
+            <End Role="Presciption" EntitySet="Presciption" />
+            <End Role="PresciptionDetail" EntitySet="PresciptionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfessionalDetails_Doctor_P" Association="Self.FK_ProfessionalDetails_Doctor_P">
+            <End Role="Doctor_P" EntitySet="Doctor_P" />
+            <End Role="ProfessionalDetails" EntitySet="ProfessionalDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HealthCareDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Brand_id" />
+          </Key>
+          <Property Name="Brand_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Drugs" Relationship="Self.FK_Drug_Brand" FromRole="Brand" ToRole="Drug" />
+        </EntityType>
+        <EntityType Name="DocEducation">
+          <Key>
+            <PropertyRef Name="Edu_id" />
+          </Key>
+          <Property Name="Edu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doctor_id" Type="Int32" Nullable="false" />
+          <Property Name="InstituteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassingYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Certificate" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Doctor_P" Relationship="Self.FK_DocEducation_Doctor_P" FromRole="DocEducation" ToRole="Doctor_P" />
+        </EntityType>
+        <EntityType Name="Doctor_P">
+          <Key>
+            <PropertyRef Name="Doctor_id" />
+          </Key>
+          <Property Name="Doctor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProfilePhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DocEducations" Relationship="Self.FK_DocEducation_Doctor_P" FromRole="Doctor_P" ToRole="DocEducation" />
+          <NavigationProperty Name="Presciptions" Relationship="Self.FK_Presciption_Doctor_P" FromRole="Doctor_P" ToRole="Presciption" />
+          <NavigationProperty Name="ProfessionalDetails" Relationship="Self.FK_ProfessionalDetails_Doctor_P" FromRole="Doctor_P" ToRole="ProfessionalDetails" />
+        </EntityType>
+        <EntityType Name="Drug">
+          <Key>
+            <PropertyRef Name="Drug_id" />
+          </Key>
+          <Property Name="Drug_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Generic_id" Type="Int32" Nullable="false" />
+          <Property Name="Brand_id" Type="Int32" Nullable="false" />
+          <Property Name="Strength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Drug_Brand" FromRole="Drug" ToRole="Brand" />
+          <NavigationProperty Name="Generic" Relationship="Self.FK_Drug_Generic" FromRole="Drug" ToRole="Generic" />
+          <NavigationProperty Name="PresciptionDetails" Relationship="Self.FK_PresciptionDetail_Drug" FromRole="Drug" ToRole="PresciptionDetail" />
+        </EntityType>
+        <EntityType Name="Generic">
+          <Key>
+            <PropertyRef Name="Generic_id" />
+          </Key>
+          <Property Name="Generic_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenericName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Drugs" Relationship="Self.FK_Drug_Generic" FromRole="Generic" ToRole="Drug" />
+        </EntityType>
+        <EntityType Name="Patient_P">
+          <Key>
+            <PropertyRef Name="Patient_id" />
+          </Key>
+          <Property Name="Patient_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsMarried" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Presciptions" Relationship="Self.FK_Presciption_Patient_P" FromRole="Patient_P" ToRole="Presciption" />
+        </EntityType>
+        <EntityType Name="Presciption">
+          <Key>
+            <PropertyRef Name="Prescip_id" />
+          </Key>
+          <Property Name="Prescip_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patient_id" Type="Int32" Nullable="false" />
+          <Property Name="Doctor_id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Temp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Visit_no" Type="Int32" />
+          <Property Name="NextDate" Type="DateTime" Precision="0" />
+          <Property Name="Indication" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctor_P" Relationship="Self.FK_Presciption_Doctor_P" FromRole="Presciption" ToRole="Doctor_P" />
+          <NavigationProperty Name="Patient_P" Relationship="Self.FK_Presciption_Patient_P" FromRole="Presciption" ToRole="Patient_P" />
+          <NavigationProperty Name="PresciptionDetails" Relationship="Self.FK_PresciptionDetail_Presciption" FromRole="Presciption" ToRole="PresciptionDetail" />
+        </EntityType>
+        <EntityType Name="PresciptionDetail">
+          <Key>
+            <PropertyRef Name="PresDetail_id" />
+          </Key>
+          <Property Name="PresDetail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prescip_id" Type="Int32" Nullable="false" />
+          <Property Name="Drug_id" Type="Int32" Nullable="false" />
+          <Property Name="Doze" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Drug" Relationship="Self.FK_PresciptionDetail_Drug" FromRole="PresciptionDetail" ToRole="Drug" />
+          <NavigationProperty Name="Presciption" Relationship="Self.FK_PresciptionDetail_Presciption" FromRole="PresciptionDetail" ToRole="Presciption" />
+        </EntityType>
+        <EntityType Name="ProfessionalDetail">
+          <Key>
+            <PropertyRef Name="Pro_id" />
+          </Key>
+          <Property Name="Pro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doctor_id" Type="Int32" Nullable="false" />
+          <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Doctor_P" Relationship="Self.FK_ProfessionalDetails_Doctor_P" FromRole="ProfessionalDetails" ToRole="Doctor_P" />
+        </EntityType>
+        <Association Name="FK_Drug_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Drug" Type="Self.Drug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Brand_id" />
+            </Principal>
+            <Dependent Role="Drug">
+              <PropertyRef Name="Brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocEducation_Doctor_P">
+          <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+          <End Role="DocEducation" Type="Self.DocEducation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor_P">
+              <PropertyRef Name="Doctor_id" />
+            </Principal>
+            <Dependent Role="DocEducation">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presciption_Doctor_P">
+          <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+          <End Role="Presciption" Type="Self.Presciption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor_P">
+              <PropertyRef Name="Doctor_id" />
+            </Principal>
+            <Dependent Role="Presciption">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfessionalDetails_Doctor_P">
+          <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+          <End Role="ProfessionalDetails" Type="Self.ProfessionalDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor_P">
+              <PropertyRef Name="Doctor_id" />
+            </Principal>
+            <Dependent Role="ProfessionalDetails">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Drug_Generic">
+          <End Role="Generic" Type="Self.Generic" Multiplicity="1" />
+          <End Role="Drug" Type="Self.Drug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generic">
+              <PropertyRef Name="Generic_id" />
+            </Principal>
+            <Dependent Role="Drug">
+              <PropertyRef Name="Generic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresciptionDetail_Drug">
+          <End Role="Drug" Type="Self.Drug" Multiplicity="1" />
+          <End Role="PresciptionDetail" Type="Self.PresciptionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drug">
+              <PropertyRef Name="Drug_id" />
+            </Principal>
+            <Dependent Role="PresciptionDetail">
+              <PropertyRef Name="Drug_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Presciption_Patient_P">
+          <End Role="Patient_P" Type="Self.Patient_P" Multiplicity="1" />
+          <End Role="Presciption" Type="Self.Presciption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient_P">
+              <PropertyRef Name="Patient_id" />
+            </Principal>
+            <Dependent Role="Presciption">
+              <PropertyRef Name="Patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PresciptionDetail_Presciption">
+          <End Role="Presciption" Type="Self.Presciption" Multiplicity="1" />
+          <End Role="PresciptionDetail" Type="Self.PresciptionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presciption">
+              <PropertyRef Name="Prescip_id" />
+            </Principal>
+            <Dependent Role="PresciptionDetail">
+              <PropertyRef Name="Prescip_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HealthCareDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="DocEducations" EntityType="Self.DocEducation" />
+          <EntitySet Name="Doctor_P" EntityType="Self.Doctor_P" />
+          <EntitySet Name="Drugs" EntityType="Self.Drug" />
+          <EntitySet Name="Generics" EntityType="Self.Generic" />
+          <EntitySet Name="Patient_P" EntityType="Self.Patient_P" />
+          <EntitySet Name="Presciptions" EntityType="Self.Presciption" />
+          <EntitySet Name="PresciptionDetails" EntityType="Self.PresciptionDetail" />
+          <EntitySet Name="ProfessionalDetails" EntityType="Self.ProfessionalDetail" />
+          <AssociationSet Name="FK_Drug_Brand" Association="Self.FK_Drug_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Drug" EntitySet="Drugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocEducation_Doctor_P" Association="Self.FK_DocEducation_Doctor_P">
+            <End Role="Doctor_P" EntitySet="Doctor_P" />
+            <End Role="DocEducation" EntitySet="DocEducations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presciption_Doctor_P" Association="Self.FK_Presciption_Doctor_P">
+            <End Role="Doctor_P" EntitySet="Doctor_P" />
+            <End Role="Presciption" EntitySet="Presciptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfessionalDetails_Doctor_P" Association="Self.FK_ProfessionalDetails_Doctor_P">
+            <End Role="Doctor_P" EntitySet="Doctor_P" />
+            <End Role="ProfessionalDetails" EntitySet="ProfessionalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Drug_Generic" Association="Self.FK_Drug_Generic">
+            <End Role="Generic" EntitySet="Generics" />
+            <End Role="Drug" EntitySet="Drugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresciptionDetail_Drug" Association="Self.FK_PresciptionDetail_Drug">
+            <End Role="Drug" EntitySet="Drugs" />
+            <End Role="PresciptionDetail" EntitySet="PresciptionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Presciption_Patient_P" Association="Self.FK_Presciption_Patient_P">
+            <End Role="Patient_P" EntitySet="Patient_P" />
+            <End Role="Presciption" EntitySet="Presciptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PresciptionDetail_Presciption" Association="Self.FK_PresciptionDetail_Presciption">
+            <End Role="Presciption" EntitySet="Presciptions" />
+            <End Role="PresciptionDetail" EntitySet="PresciptionDetails" />
+          </AssociationSet>
+          <FunctionImport Name="AddBrand">
+          <Parameter Name="BrandName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddDoctor_P">
+            <Parameter Name="DoctorFullName" Mode="In" Type="String" />
+            <Parameter Name="ProfilePhoto" Mode="In" Type="Binary" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddGeneric">
+          <Parameter Name="GenericName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddPatient_P">
+            <Parameter Name="PatientFullName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="Height" Mode="In" Type="String" />
+            <Parameter Name="Weight" Mode="In" Type="String" />
+            <Parameter Name="IsMarried" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDoctor_P">
+          <Parameter Name="Doctor_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="displayBrand" ReturnType="Collection(HealthCareDBModel1.displayBrand_Result)" />
+          <FunctionImport Name="displayDocEducation" ReturnType="Collection(HealthCareDBModel1.displayDocEducation_Result)" />
+          <FunctionImport Name="displayDoctor_P" ReturnType="Collection(HealthCareDBModel1.displayDoctor_P_Result)" />
+          <FunctionImport Name="displayDrug" ReturnType="Collection(HealthCareDBModel1.displayDrug_Result)" />
+          <FunctionImport Name="displayGeneric" ReturnType="Collection(HealthCareDBModel1.displayGeneric_Result)" />
+          <FunctionImport Name="displayPatient_P" ReturnType="Collection(HealthCareDBModel1.displayPatient_P_Result)" />
+          <FunctionImport Name="displayPresciption" ReturnType="Collection(HealthCareDBModel1.displayPresciption_Result)" />
+          <FunctionImport Name="displayPresciptionDetail" ReturnType="Collection(HealthCareDBModel1.displayPresciptionDetail_Result)" />
+          <FunctionImport Name="displayProfessionalDetail" ReturnType="Collection(HealthCareDBModel1.displayProfessionalDetail_Result)" />
+          <FunctionImport Name="DrugJoinTables" ReturnType="Collection(HealthCareDBModel1.DrugJoinTables_Result)" />
+          <FunctionImport Name="PresciptionJoinTables" ReturnType="Collection(HealthCareDBModel1.PresciptionJoinTables_Result)" />
+          <FunctionImport Name="UpdateDoctor_P">
+            <Parameter Name="Doctor_id" Mode="In" Type="Int32" />
+            <Parameter Name="DoctorFullName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fn_DoctorJoinTables" EntitySet="Doctor_P" ReturnType="Collection(HealthCareDBModel1.Doctor_P)" />
+          <FunctionImport Name="DoctorJoinTables" ReturnType="Collection(HealthCareDBModel1.DoctorJoinTables_Result1)" />
+          <FunctionImport Name="fn_DoctorJoinTable" EntitySet="Doctor_P" ReturnType="Collection(HealthCareDBModel1.Doctor_P)" />
+          <EntitySet Name="SiteUsers" EntityType="HealthCareDBModel1.SiteUser" />
+          <EntitySet Name="SiteAdmins" EntityType="HealthCareDBModel1.SiteAdmin" />
+          <EntitySet Name="SitePatients" EntityType="HealthCareDBModel1.SitePatient" />
+          </EntityContainer>
+        <ComplexType Name="displayBrand_Result">
+          <Property Type="Int32" Name="Brand_id" Nullable="false" />
+          <Property Type="String" Name="BrandName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="displayDocEducation_Result">
+          <Property Type="Int32" Name="Edu_id" Nullable="false" />
+          <Property Type="Int32" Name="Doctor_id" Nullable="false" />
+          <Property Type="String" Name="InstituteName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Degree" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassingYear" Nullable="true" MaxLength="50" />
+          <Property Type="Binary" Name="Certificate" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="displayDoctor_P_Result">
+          <Property Type="Int32" Name="Doctor_id" Nullable="false" />
+          <Property Type="String" Name="DoctorFullName" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="ProfilePhoto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="displayDrug_Result">
+          <Property Type="Int32" Name="Drug_id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="Generic_id" Nullable="false" />
+          <Property Type="Int32" Name="Brand_id" Nullable="false" />
+          <Property Type="String" Name="Strength" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="displayGeneric_Result">
+          <Property Type="Int32" Name="Generic_id" Nullable="false" />
+          <Property Type="String" Name="GenericName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="displayPatient_P_Result">
+          <Property Type="Int32" Name="Patient_id" Nullable="false" />
+          <Property Type="String" Name="PatientFullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="Height" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Weight" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="IsMarried" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="displayPresciption_Result">
+          <Property Type="Int32" Name="Prescip_id" Nullable="false" />
+          <Property Type="Int32" Name="Patient_id" Nullable="false" />
+          <Property Type="Int32" Name="Doctor_id" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="BP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Temp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Weight" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Visit_no" Nullable="true" />
+          <Property Type="DateTime" Name="NextDate" Nullable="true" />
+          <Property Type="String" Name="Indication" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="displayPresciptionDetail_Result">
+          <Property Type="Int32" Name="PresDetail_id" Nullable="false" />
+          <Property Type="Int32" Name="Prescip_id" Nullable="false" />
+          <Property Type="Int32" Name="Drug_id" Nullable="false" />
+          <Property Type="String" Name="Doze" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Duration" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="displayProfessionalDetail_Result">
+          <Property Type="Int32" Name="Pro_id" Nullable="false" />
+          <Property Type="Int32" Name="Doctor_id" Nullable="false" />
+          <Property Type="String" Name="Specialization" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="DoctorJoinTables_Result">
+          <Property Type="String" Name="DoctorFullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Specialization" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="InstituteName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Degree" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassingYear" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="DrugJoinTables_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="GenericName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="BrandName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Strength" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PresciptionJoinTables_Result">
+          <Property Type="String" Name="PatientFullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="DoctorFullName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="BP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Temp" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Weight" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Indication" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Strength" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Doze" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Duration" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Visit_no" Nullable="true" />
+          <Property Type="DateTime" Name="NextDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DoctorJoinTables_Result1">
+          <Property Type="Int32" Name="Doctor_id" Nullable="false" />
+          <Property Type="String" Name="DoctorFullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Specialization" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="InstituteName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Degree" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassingYear" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="SiteUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsValid" Type="Boolean" />
+          <Property Name="role_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SiteAdmin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsValid" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SitePatient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsValid" Type="Boolean" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HealthCareDBModel1StoreContainer" CdmEntityContainer="HealthCareDBEntities1">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocEducations">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.DocEducation">
+              <MappingFragment StoreEntitySet="DocEducation">
+                <ScalarProperty Name="Edu_id" ColumnName="Edu_id" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+                <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctor_P">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.Doctor_P">
+              <MappingFragment StoreEntitySet="Doctor_P">
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+                <ScalarProperty Name="ProfilePhoto" ColumnName="ProfilePhoto" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drugs">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.Drug">
+              <MappingFragment StoreEntitySet="Drug">
+                <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+                <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generics">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.Generic">
+              <MappingFragment StoreEntitySet="Generic">
+                <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+                <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient_P">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.Patient_P">
+              <MappingFragment StoreEntitySet="Patient_P">
+                <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+                <ScalarProperty Name="PatientFullName" ColumnName="PatientFullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Presciptions">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.Presciption">
+              <MappingFragment StoreEntitySet="Presciption">
+                <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+                <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BP" ColumnName="BP" />
+                <ScalarProperty Name="Temp" ColumnName="Temp" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Visit_no" ColumnName="Visit_no" />
+                <ScalarProperty Name="NextDate" ColumnName="NextDate" />
+                <ScalarProperty Name="Indication" ColumnName="Indication" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PresciptionDetails">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.PresciptionDetail">
+              <MappingFragment StoreEntitySet="PresciptionDetail">
+                <ScalarProperty Name="PresDetail_id" ColumnName="PresDetail_id" />
+                <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+                <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+                <ScalarProperty Name="Doze" ColumnName="Doze" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfessionalDetails">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.ProfessionalDetail">
+              <MappingFragment StoreEntitySet="ProfessionalDetails">
+                <ScalarProperty Name="Pro_id" ColumnName="Pro_id" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddBrand" FunctionName="HealthCareDBModel1.Store.AddBrand" />
+          <FunctionImportMapping FunctionImportName="AddDoctor_P" FunctionName="HealthCareDBModel1.Store.AddDoctor_P" />
+          <FunctionImportMapping FunctionImportName="AddGeneric" FunctionName="HealthCareDBModel1.Store.AddGeneric" />
+          <FunctionImportMapping FunctionImportName="AddPatient_P" FunctionName="HealthCareDBModel1.Store.AddPatient_P" />
+          <FunctionImportMapping FunctionImportName="DeleteDoctor_P" FunctionName="HealthCareDBModel1.Store.DeleteDoctor_P" />
+          <FunctionImportMapping FunctionImportName="displayBrand" FunctionName="HealthCareDBModel1.Store.displayBrand">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayBrand_Result">
+                <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayDocEducation" FunctionName="HealthCareDBModel1.Store.displayDocEducation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayDocEducation_Result">
+                <ScalarProperty Name="Edu_id" ColumnName="Edu_id" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+                <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayDoctor_P" FunctionName="HealthCareDBModel1.Store.displayDoctor_P">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayDoctor_P_Result">
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+                <ScalarProperty Name="ProfilePhoto" ColumnName="ProfilePhoto" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayDrug" FunctionName="HealthCareDBModel1.Store.displayDrug">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayDrug_Result">
+                <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+                <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayGeneric" FunctionName="HealthCareDBModel1.Store.displayGeneric">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayGeneric_Result">
+                <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+                <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayPatient_P" FunctionName="HealthCareDBModel1.Store.displayPatient_P">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayPatient_P_Result">
+                <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+                <ScalarProperty Name="PatientFullName" ColumnName="PatientFullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayPresciption" FunctionName="HealthCareDBModel1.Store.displayPresciption">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayPresciption_Result">
+                <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+                <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BP" ColumnName="BP" />
+                <ScalarProperty Name="Temp" ColumnName="Temp" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Visit_no" ColumnName="Visit_no" />
+                <ScalarProperty Name="NextDate" ColumnName="NextDate" />
+                <ScalarProperty Name="Indication" ColumnName="Indication" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayPresciptionDetail" FunctionName="HealthCareDBModel1.Store.displayPresciptionDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayPresciptionDetail_Result">
+                <ScalarProperty Name="PresDetail_id" ColumnName="PresDetail_id" />
+                <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+                <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+                <ScalarProperty Name="Doze" ColumnName="Doze" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="displayProfessionalDetail" FunctionName="HealthCareDBModel1.Store.displayProfessionalDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.displayProfessionalDetail_Result">
+                <ScalarProperty Name="Pro_id" ColumnName="Pro_id" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DrugJoinTables" FunctionName="HealthCareDBModel1.Store.DrugJoinTables">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.DrugJoinTables_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PresciptionJoinTables" FunctionName="HealthCareDBModel1.Store.PresciptionJoinTables">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.PresciptionJoinTables_Result">
+                <ScalarProperty Name="PatientFullName" ColumnName="PatientFullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BP" ColumnName="BP" />
+                <ScalarProperty Name="Temp" ColumnName="Temp" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Indication" ColumnName="Indication" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="Doze" ColumnName="Doze" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Visit_no" ColumnName="Visit_no" />
+                <ScalarProperty Name="NextDate" ColumnName="NextDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateDoctor_P" FunctionName="HealthCareDBModel1.Store.UpdateDoctor_P" />
+          <FunctionImportMapping FunctionImportName="DoctorJoinTables" FunctionName="HealthCareDBModel1.Store.DoctorJoinTables">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareDBModel1.DoctorJoinTables_Result1">
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_DoctorJoinTable" FunctionName="HealthCareDBModel1.Store.DoctorJoinTables" />
+          <EntitySetMapping Name="SiteUsers">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.SiteUser">
+              <MappingFragment StoreEntitySet="SiteUser">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteAdmins">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.SiteAdmin">
+              <MappingFragment StoreEntitySet="SiteAdmin">
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SitePatients">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.SitePatient">
+              <MappingFragment StoreEntitySet="SitePatient">
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

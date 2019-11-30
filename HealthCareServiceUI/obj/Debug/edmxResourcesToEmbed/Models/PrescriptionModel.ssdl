@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HealthCareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Brand_id" />
+    </Key>
+    <Property Name="Brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocEducation">
+    <Key>
+      <PropertyRef Name="Edu_id" />
+    </Key>
+    <Property Name="Edu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Doctor_id" Type="int" Nullable="false" />
+    <Property Name="InstituteName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Degree" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PassingYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="Certificate" Type="image" />
+  </EntityType>
+  <EntityType Name="Doctor_P">
+    <Key>
+      <PropertyRef Name="Doctor_id" />
+    </Key>
+    <Property Name="Doctor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorFullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProfilePhoto" Type="image" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Drug">
+    <Key>
+      <PropertyRef Name="Drug_id" />
+    </Key>
+    <Property Name="Drug_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Generic_id" Type="int" Nullable="false" />
+    <Property Name="Brand_id" Type="int" Nullable="false" />
+    <Property Name="Strength" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Generic">
+    <Key>
+      <PropertyRef Name="Generic_id" />
+    </Key>
+    <Property Name="Generic_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GenericName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient_P">
+    <Key>
+      <PropertyRef Name="Patient_id" />
+    </Key>
+    <Property Name="Patient_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientFullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Height" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsMarried" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Presciption">
+    <Key>
+      <PropertyRef Name="Prescip_id" />
+    </Key>
+    <Property Name="Prescip_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Patient_id" Type="int" Nullable="false" />
+    <Property Name="Doctor_id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="BP" Type="nvarchar" MaxLength="50" />
+    <Property Name="Temp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="50" />
+    <Property Name="Visit_no" Type="int" />
+    <Property Name="NextDate" Type="date" />
+    <Property Name="Indication" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PresciptionDetail">
+    <Key>
+      <PropertyRef Name="PresDetail_id" />
+    </Key>
+    <Property Name="PresDetail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prescip_id" Type="int" Nullable="false" />
+    <Property Name="Drug_id" Type="int" Nullable="false" />
+    <Property Name="Doze" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfessionalDetails">
+    <Key>
+      <PropertyRef Name="Pro_id" />
+    </Key>
+    <Property Name="Pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Doctor_id" Type="int" Nullable="false" />
+    <Property Name="Specialization" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DocEducation_Doctor_P">
+    <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+    <End Role="DocEducation" Type="Self.DocEducation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor_P">
+        <PropertyRef Name="Doctor_id" />
+      </Principal>
+      <Dependent Role="DocEducation">
+        <PropertyRef Name="Doctor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Drug_Brand">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+    <End Role="Drug" Type="Self.Drug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Brand_id" />
+      </Principal>
+      <Dependent Role="Drug">
+        <PropertyRef Name="Brand_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Drug_Generic">
+    <End Role="Generic" Type="Self.Generic" Multiplicity="1" />
+    <End Role="Drug" Type="Self.Drug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generic">
+        <PropertyRef Name="Generic_id" />
+      </Principal>
+      <Dependent Role="Drug">
+        <PropertyRef Name="Generic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presciption_Doctor_P">
+    <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+    <End Role="Presciption" Type="Self.Presciption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor_P">
+        <PropertyRef Name="Doctor_id" />
+      </Principal>
+      <Dependent Role="Presciption">
+        <PropertyRef Name="Doctor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Presciption_Patient_P">
+    <End Role="Patient_P" Type="Self.Patient_P" Multiplicity="1" />
+    <End Role="Presciption" Type="Self.Presciption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_P">
+        <PropertyRef Name="Patient_id" />
+      </Principal>
+      <Dependent Role="Presciption">
+        <PropertyRef Name="Patient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PresciptionDetail_Drug">
+    <End Role="Drug" Type="Self.Drug" Multiplicity="1" />
+    <End Role="PresciptionDetail" Type="Self.PresciptionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drug">
+        <PropertyRef Name="Drug_id" />
+      </Principal>
+      <Dependent Role="PresciptionDetail">
+        <PropertyRef Name="Drug_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PresciptionDetail_Presciption">
+    <End Role="Presciption" Type="Self.Presciption" Multiplicity="1" />
+    <End Role="PresciptionDetail" Type="Self.PresciptionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Presciption">
+        <PropertyRef Name="Prescip_id" />
+      </Principal>
+      <Dependent Role="PresciptionDetail">
+        <PropertyRef Name="Prescip_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfessionalDetails_Doctor_P">
+    <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
+    <End Role="ProfessionalDetails" Type="Self.ProfessionalDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor_P">
+        <PropertyRef Name="Doctor_id" />
+      </Principal>
+      <Dependent Role="ProfessionalDetails">
+        <PropertyRef Name="Doctor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BrandName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DoctorFullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProfilePhoto" Type="image" Mode="In" />
+    <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="DOB" Type="date" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddGeneric" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GenericName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddPatient_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PatientFullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+    <Parameter Name="Height" Type="nvarchar" Mode="In" />
+    <Parameter Name="Weight" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsMarried" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Doctor_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="displayBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayDocEducation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayDrug" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayGeneric" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayPatient_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayPresciption" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayPresciptionDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="displayProfessionalDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DoctorJoinTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DrugJoinTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PresciptionJoinTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateDoctor_P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Doctor_id" Type="int" Mode="In" />
+    <Parameter Name="DoctorFullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="DOB" Type="date" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="HealthCareDBModelStoreContainer">
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocEducation" EntityType="Self.DocEducation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctor_P" EntityType="Self.Doctor_P" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Drug" EntityType="Self.Drug" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Generic" EntityType="Self.Generic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient_P" EntityType="Self.Patient_P" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Presciption" EntityType="Self.Presciption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PresciptionDetail" EntityType="Self.PresciptionDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfessionalDetails" EntityType="Self.ProfessionalDetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DocEducation_Doctor_P" Association="Self.FK_DocEducation_Doctor_P">
+      <End Role="Doctor_P" EntitySet="Doctor_P" />
+      <End Role="DocEducation" EntitySet="DocEducation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Drug_Brand" Association="Self.FK_Drug_Brand">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Drug" EntitySet="Drug" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Drug_Generic" Association="Self.FK_Drug_Generic">
+      <End Role="Generic" EntitySet="Generic" />
+      <End Role="Drug" EntitySet="Drug" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presciption_Doctor_P" Association="Self.FK_Presciption_Doctor_P">
+      <End Role="Doctor_P" EntitySet="Doctor_P" />
+      <End Role="Presciption" EntitySet="Presciption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Presciption_Patient_P" Association="Self.FK_Presciption_Patient_P">
+      <End Role="Patient_P" EntitySet="Patient_P" />
+      <End Role="Presciption" EntitySet="Presciption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PresciptionDetail_Drug" Association="Self.FK_PresciptionDetail_Drug">
+      <End Role="Drug" EntitySet="Drug" />
+      <End Role="PresciptionDetail" EntitySet="PresciptionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PresciptionDetail_Presciption" Association="Self.FK_PresciptionDetail_Presciption">
+      <End Role="Presciption" EntitySet="Presciption" />
+      <End Role="PresciptionDetail" EntitySet="PresciptionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfessionalDetails_Doctor_P" Association="Self.FK_ProfessionalDetails_Doctor_P">
+      <End Role="Doctor_P" EntitySet="Doctor_P" />
+      <End Role="ProfessionalDetails" EntitySet="ProfessionalDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

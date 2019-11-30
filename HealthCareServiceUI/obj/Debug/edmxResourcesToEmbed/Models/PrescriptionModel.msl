@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HealthCareDBModelStoreContainer" CdmEntityContainer="HealthCareDBEntities4">
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="HealthCareDBModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocEducations">
+      <EntityTypeMapping TypeName="HealthCareDBModel.DocEducation">
+        <MappingFragment StoreEntitySet="DocEducation">
+          <ScalarProperty Name="Edu_id" ColumnName="Edu_id" />
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+          <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctor_P">
+      <EntityTypeMapping TypeName="HealthCareDBModel.Doctor_P">
+        <MappingFragment StoreEntitySet="Doctor_P">
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+          <ScalarProperty Name="ProfilePhoto" ColumnName="ProfilePhoto" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drugs">
+      <EntityTypeMapping TypeName="HealthCareDBModel.Drug">
+        <MappingFragment StoreEntitySet="Drug">
+          <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+          <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Generics">
+      <EntityTypeMapping TypeName="HealthCareDBModel.Generic">
+        <MappingFragment StoreEntitySet="Generic">
+          <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+          <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patient_P">
+      <EntityTypeMapping TypeName="HealthCareDBModel.Patient_P">
+        <MappingFragment StoreEntitySet="Patient_P">
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="PatientFullName" ColumnName="PatientFullName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Presciptions">
+      <EntityTypeMapping TypeName="HealthCareDBModel.Presciption">
+        <MappingFragment StoreEntitySet="Presciption">
+          <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BP" ColumnName="BP" />
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Visit_no" ColumnName="Visit_no" />
+          <ScalarProperty Name="NextDate" ColumnName="NextDate" />
+          <ScalarProperty Name="Indication" ColumnName="Indication" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PresciptionDetails">
+      <EntityTypeMapping TypeName="HealthCareDBModel.PresciptionDetail">
+        <MappingFragment StoreEntitySet="PresciptionDetail">
+          <ScalarProperty Name="PresDetail_id" ColumnName="PresDetail_id" />
+          <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+          <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+          <ScalarProperty Name="Doze" ColumnName="Doze" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfessionalDetails">
+      <EntityTypeMapping TypeName="HealthCareDBModel.ProfessionalDetail">
+        <MappingFragment StoreEntitySet="ProfessionalDetails">
+          <ScalarProperty Name="Pro_id" ColumnName="Pro_id" />
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddBrand" FunctionName="HealthCareDBModel.Store.AddBrand" />
+    <FunctionImportMapping FunctionImportName="AddDoctor_P" FunctionName="HealthCareDBModel.Store.AddDoctor_P" />
+    <FunctionImportMapping FunctionImportName="AddGeneric" FunctionName="HealthCareDBModel.Store.AddGeneric" />
+    <FunctionImportMapping FunctionImportName="AddPatient_P" FunctionName="HealthCareDBModel.Store.AddPatient_P" />
+    <FunctionImportMapping FunctionImportName="DeleteDoctor_P" FunctionName="HealthCareDBModel.Store.DeleteDoctor_P" />
+    <FunctionImportMapping FunctionImportName="displayBrand" FunctionName="HealthCareDBModel.Store.displayBrand">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayBrand_Result">
+          <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayDocEducation" FunctionName="HealthCareDBModel.Store.displayDocEducation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayDocEducation_Result">
+          <ScalarProperty Name="Edu_id" ColumnName="Edu_id" />
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+          <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayDoctor_P" FunctionName="HealthCareDBModel.Store.displayDoctor_P">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayDoctor_P_Result">
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+          <ScalarProperty Name="ProfilePhoto" ColumnName="ProfilePhoto" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayDrug" FunctionName="HealthCareDBModel.Store.displayDrug">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayDrug_Result">
+          <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+          <ScalarProperty Name="Brand_id" ColumnName="Brand_id" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayGeneric" FunctionName="HealthCareDBModel.Store.displayGeneric">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayGeneric_Result">
+          <ScalarProperty Name="Generic_id" ColumnName="Generic_id" />
+          <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayPatient_P" FunctionName="HealthCareDBModel.Store.displayPatient_P">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayPatient_P_Result">
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="PatientFullName" ColumnName="PatientFullName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayPresciption" FunctionName="HealthCareDBModel.Store.displayPresciption">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayPresciption_Result">
+          <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+          <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BP" ColumnName="BP" />
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Visit_no" ColumnName="Visit_no" />
+          <ScalarProperty Name="NextDate" ColumnName="NextDate" />
+          <ScalarProperty Name="Indication" ColumnName="Indication" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayPresciptionDetail" FunctionName="HealthCareDBModel.Store.displayPresciptionDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayPresciptionDetail_Result">
+          <ScalarProperty Name="PresDetail_id" ColumnName="PresDetail_id" />
+          <ScalarProperty Name="Prescip_id" ColumnName="Prescip_id" />
+          <ScalarProperty Name="Drug_id" ColumnName="Drug_id" />
+          <ScalarProperty Name="Doze" ColumnName="Doze" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="displayProfessionalDetail" FunctionName="HealthCareDBModel.Store.displayProfessionalDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.displayProfessionalDetail_Result">
+          <ScalarProperty Name="Pro_id" ColumnName="Pro_id" />
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DoctorJoinTables" FunctionName="HealthCareDBModel.Store.DoctorJoinTables">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.DoctorJoinTables_Result">
+          <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+          <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+          <ScalarProperty Name="InstituteName" ColumnName="InstituteName" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DrugJoinTables" FunctionName="HealthCareDBModel.Store.DrugJoinTables">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.DrugJoinTables_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PresciptionJoinTables" FunctionName="HealthCareDBModel.Store.PresciptionJoinTables">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HealthCareDBModel.PresciptionJoinTables_Result">
+          <ScalarProperty Name="PatientFullName" ColumnName="PatientFullName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="BP" ColumnName="BP" />
+          <ScalarProperty Name="Temp" ColumnName="Temp" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Indication" ColumnName="Indication" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="Doze" ColumnName="Doze" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Visit_no" ColumnName="Visit_no" />
+          <ScalarProperty Name="NextDate" ColumnName="NextDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateDoctor_P" FunctionName="HealthCareDBModel.Store.UpdateDoctor_P" />
+    <FunctionImportMapping FunctionImportName="fnAddPatient_P" FunctionName="HealthCareDBModel.Store.AddPatient_P" />
+  </EntityContainerMapping>
+</Mapping>

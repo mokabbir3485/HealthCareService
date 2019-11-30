@@ -1,0 +1,38 @@
+﻿@model IEnumerable<HealthCareServiceUI.Models.GenericClass>
+
+@{
+    ViewBag.Title = "Medicine Information";
+}
+    <h2>Generic List</h2>
+<p>
+    @Html.ActionLink("Create New", "AddIndex")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Select
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GenericName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(">>>", "Details", new { id = item.Generic_id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenericName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Generic_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Generic_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Generic_id })
+            </td>
+        </tr>
+    }
+
+</table>

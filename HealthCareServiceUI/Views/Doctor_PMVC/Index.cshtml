@@ -1,0 +1,73 @@
+﻿@model IEnumerable<HealthCareServiceUI.Models.Doctor_PClass>
+
+@{
+    ViewBag.Title = "Doctor Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <center>
+
+        <h2>Doctor Personal Profile</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "AddIndex")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Select
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Doctor_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorFullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(">>>", "Details", new { id = item.Doctor_id })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Doctor_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoctorFullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mobile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.Doctor_id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.Doctor_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.Doctor_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </center>
