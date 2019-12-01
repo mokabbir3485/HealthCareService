@@ -21,6 +21,17 @@ namespace HealthCareServiceUI
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            config.SuppressDefaultHostAuthentication();
+
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Formatters.Add(config.Formatters.JsonFormatter);
+
+            config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+
+
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
