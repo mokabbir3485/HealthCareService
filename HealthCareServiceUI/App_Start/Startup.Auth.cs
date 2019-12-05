@@ -10,8 +10,6 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using HealthCareServiceUI.Providers;
 using HealthCareServiceUI.Models;
-using Microsoft.Owin.Security.Facebook;
-using HealthCareServiceUI.Facebook;
 
 namespace HealthCareServiceUI
 {
@@ -58,25 +56,14 @@ namespace HealthCareServiceUI
             //    consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //    appId: "492119908218180",
-            //    appSecret: "3a6a4b49dfa28cbf9fa3bb6b10a52310");
+            //    appId: "",
+            //    appSecret: "");
 
-            var facebookOptions = new FacebookAuthenticationOptions()
-            {
-                AppId = "447344285903152",
-                AppSecret = "7be1f2d83367a453b23e76e04a19fa15",
-                BackchannelHttpHandler = new FacebookBackChangelHandler(),
-                UserInformationEndpoint = "https://graph.facebook.com/v2.4/me?fields=id,email"
-            };
-
-            facebookOptions.Scope.Add("email");
-            app.UseFacebookAuthentication(facebookOptions);
-
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "740309896906-35lg83did3iltq304hjo474f8tml4amp.apps.googleusercontent.com",
-                ClientSecret = "b1615aDIajST4QR4aTCu3rx2"
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "416772434302-vgnps9ekk9rn52t0agmjcp8uberqph5u.apps.googleusercontent.com",
+            //    ClientSecret = "piCwPgHMv6al1MGqQFbM1Isu"
+            //});
         }
     }
 }

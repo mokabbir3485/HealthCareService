@@ -21,6 +21,7 @@ namespace HealthCareServiceUI.Controllers
         public string Mobile;
         public string Email;
 
+        //[Authorize]
         [HttpGet]
         public IHttpActionResult getdoctor_pdetails()
         {

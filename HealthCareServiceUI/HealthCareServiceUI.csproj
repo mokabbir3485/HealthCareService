@@ -403,6 +403,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Login.html" />
     <Content Include="Models\PrescriptionModel2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PrescriptionModel2.edmx</DependentUpon>
@@ -413,6 +414,7 @@
       <DependentUpon>PrescriptionModel2.edmx</DependentUpon>
       <LastGenOutput>PrescriptionModel2.cs</LastGenOutput>
     </Content>
+    <Content Include="Register.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
