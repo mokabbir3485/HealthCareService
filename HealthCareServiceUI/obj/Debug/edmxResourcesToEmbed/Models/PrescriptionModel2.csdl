@@ -301,6 +301,7 @@
     <EntitySet Name="SiteUsers" EntityType="HealthCareDBModel1.SiteUser" />
     <EntitySet Name="SiteAdmins" EntityType="HealthCareDBModel1.SiteAdmin" />
     <EntitySet Name="SitePatients" EntityType="HealthCareDBModel1.SitePatient" />
+    <EntitySet Name="DoctorNews" EntityType="HealthCareDBModel1.DoctorNew" />
   </EntityContainer>
   <ComplexType Name="displayBrand_Result">
     <Property Type="Int32" Name="Brand_id" Nullable="false" />
@@ -442,5 +443,16 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IsValid" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="DoctorNew">
+    <Key>
+      <PropertyRef Name="Doctor_id" />
+    </Key>
+    <Property Name="Doctor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

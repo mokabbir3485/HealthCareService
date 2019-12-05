@@ -25,6 +25,7 @@
         <EntityTypeShape EntityType="HealthCareDBModel1.SiteUser" Width="1.5" PointX="8.625" PointY="1" />
         <EntityTypeShape EntityType="HealthCareDBModel1.SiteAdmin" Width="1.5" PointX="6.625" PointY="0.5" />
         <EntityTypeShape EntityType="HealthCareDBModel1.SitePatient" Width="1.5" PointX="6.625" PointY="2.875" />
+        <EntityTypeShape EntityType="HealthCareDBModel1.DoctorNew" Width="1.5" PointX="0.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

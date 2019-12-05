@@ -35,6 +35,17 @@
           <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="DoctorNew">
+          <Key>
+            <PropertyRef Name="Doctor_id" />
+          </Key>
+          <Property Name="Doctor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorFullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Drug">
           <Key>
             <PropertyRef Name="Drug_id" />
@@ -278,6 +289,7 @@
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocEducation" EntityType="Self.DocEducation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor_P" EntityType="Self.Doctor_P" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorNew" EntityType="Self.DoctorNew" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Drug" EntityType="Self.Drug" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Generic" EntityType="Self.Generic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient_P" EntityType="Self.Patient_P" Schema="dbo" store:Type="Tables" />
@@ -625,6 +637,7 @@
           <EntitySet Name="SiteUsers" EntityType="HealthCareDBModel1.SiteUser" />
           <EntitySet Name="SiteAdmins" EntityType="HealthCareDBModel1.SiteAdmin" />
           <EntitySet Name="SitePatients" EntityType="HealthCareDBModel1.SitePatient" />
+          <EntitySet Name="DoctorNews" EntityType="HealthCareDBModel1.DoctorNew" />
           </EntityContainer>
         <ComplexType Name="displayBrand_Result">
           <Property Type="Int32" Name="Brand_id" Nullable="false" />
@@ -766,6 +779,17 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsValid" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DoctorNew">
+          <Key>
+            <PropertyRef Name="Doctor_id" />
+          </Key>
+          <Property Name="Doctor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1065,6 +1089,18 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorNews">
+            <EntityTypeMapping TypeName="HealthCareDBModel1.DoctorNew">
+              <MappingFragment StoreEntitySet="DoctorNew">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

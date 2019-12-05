@@ -296,5 +296,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DoctorNews">
+      <EntityTypeMapping TypeName="HealthCareDBModel1.DoctorNew">
+        <MappingFragment StoreEntitySet="DoctorNew">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
+          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

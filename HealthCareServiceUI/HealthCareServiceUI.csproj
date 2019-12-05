@@ -254,6 +254,7 @@
     <Compile Include="Controllers\DocEducationMVCController.cs" />
     <Compile Include="Controllers\DoctorJoinTablesController.cs" />
     <Compile Include="Controllers\DoctorJointablesMVCController.cs" />
+    <Compile Include="Controllers\DoctorNewController.cs" />
     <Compile Include="Controllers\Doctor_PController.cs" />
     <Compile Include="Controllers\Doctor_PMVCController.cs" />
     <Compile Include="Controllers\DrugController.cs" />
@@ -323,6 +324,9 @@
       <DependentUpon>PrescriptionModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoctorJoinTables_Result1.cs">
+      <DependentUpon>PrescriptionModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoctorNew.cs">
       <DependentUpon>PrescriptionModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Doctor_P.cs">

@@ -30,6 +30,17 @@
     <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="DoctorNew">
+    <Key>
+      <PropertyRef Name="Doctor_id" />
+    </Key>
+    <Property Name="Doctor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoctorFullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Drug">
     <Key>
       <PropertyRef Name="Drug_id" />
@@ -273,6 +284,7 @@
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DocEducation" EntityType="Self.DocEducation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Doctor_P" EntityType="Self.Doctor_P" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorNew" EntityType="Self.DoctorNew" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Drug" EntityType="Self.Drug" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Generic" EntityType="Self.Generic" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Patient_P" EntityType="Self.Patient_P" Schema="dbo" store:Type="Tables" />

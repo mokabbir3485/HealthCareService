@@ -39,6 +39,7 @@ namespace HealthCareServiceUI.Models
         public virtual DbSet<SiteUser> SiteUsers { get; set; }
         public virtual DbSet<SiteAdmin> SiteAdmins { get; set; }
         public virtual DbSet<SitePatient> SitePatients { get; set; }
+        public virtual DbSet<DoctorNew> DoctorNews { get; set; }
     
         public virtual int AddBrand(string brandName)
         {
