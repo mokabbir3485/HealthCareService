@@ -298,10 +298,7 @@
     <FunctionImport Name="fn_DoctorJoinTables" EntitySet="Doctor_P" ReturnType="Collection(HealthCareDBModel1.Doctor_P)" />
     <FunctionImport Name="DoctorJoinTables" ReturnType="Collection(HealthCareDBModel1.DoctorJoinTables_Result1)" />
     <FunctionImport Name="fn_DoctorJoinTable" EntitySet="Doctor_P" ReturnType="Collection(HealthCareDBModel1.Doctor_P)" />
-    <EntitySet Name="SiteUsers" EntityType="HealthCareDBModel1.SiteUser" />
-    <EntitySet Name="SiteAdmins" EntityType="HealthCareDBModel1.SiteAdmin" />
-    <EntitySet Name="SitePatients" EntityType="HealthCareDBModel1.SitePatient" />
-    <EntitySet Name="DoctorNews" EntityType="HealthCareDBModel1.DoctorNew" />
+    <EntitySet Name="AspNetUsers" EntityType="HealthCareDBModel1.AspNetUser" />
   </EntityContainer>
   <ComplexType Name="displayBrand_Result">
     <Property Type="Int32" Name="Brand_id" Nullable="false" />
@@ -413,46 +410,21 @@
     <Property Type="String" Name="PassingYear" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Mobile" Nullable="false" MaxLength="50" />
   </ComplexType>
-  <EntityType Name="SiteUser">
+  <EntityType Name="AspNetUser">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsValid" Type="Boolean" />
-    <Property Name="role_id" Type="Int32" />
-  </EntityType>
-  <EntityType Name="SiteAdmin">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsValid" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="SitePatient">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsValid" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="DoctorNew">
-    <Key>
-      <PropertyRef Name="Doctor_id" />
-    </Key>
-    <Property Name="Doctor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DoctorFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DOB" Type="DateTime" Precision="0" />
-    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

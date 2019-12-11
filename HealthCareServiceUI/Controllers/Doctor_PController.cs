@@ -11,6 +11,7 @@ using HealthCareServiceUI.Models;
 
 namespace HealthCareServiceUI.Controllers
 {
+    [Authorize]
     public class Doctor_PController : ApiController
     {
         HealthCareDBEntities1 hd = new HealthCareDBEntities1();
@@ -21,7 +22,28 @@ namespace HealthCareServiceUI.Controllers
         public string Mobile;
         public string Email;
 
-        //[Authorize]
+        //private HealthCareDBEntities1 db = new HealthCareDBEntities1();
+
+        //// GET: api/DoctorNew
+        //public IQueryable<Doctor_P> GetDoctorNews()
+        //{
+        //    return db.Doctor_P;
+        //}
+
+        //// GET: api/DoctorNew/5
+        //[ResponseType(typeof(Doctor_P))]
+        //public IHttpActionResult GetDoctorNew(int id)
+        //{
+        //    Doctor_P doctorNew = db.Doctor_P.Find(id);
+        //    if (doctorNew == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(doctorNew);
+        //}
+
+        
         [HttpGet]
         public IHttpActionResult getdoctor_pdetails()
         {

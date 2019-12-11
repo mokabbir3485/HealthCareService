@@ -262,49 +262,21 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="fn_DoctorJoinTable" FunctionName="HealthCareDBModel1.Store.DoctorJoinTables" />
-    <EntitySetMapping Name="SiteUsers">
-      <EntityTypeMapping TypeName="HealthCareDBModel1.SiteUser">
-        <MappingFragment StoreEntitySet="SiteUser">
-          <ScalarProperty Name="role_id" ColumnName="role_id" />
-          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="HealthCareDBModel1.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SiteAdmins">
-      <EntityTypeMapping TypeName="HealthCareDBModel1.SiteAdmin">
-        <MappingFragment StoreEntitySet="SiteAdmin">
-          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SitePatients">
-      <EntityTypeMapping TypeName="HealthCareDBModel1.SitePatient">
-        <MappingFragment StoreEntitySet="SitePatient">
-          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DoctorNews">
-      <EntityTypeMapping TypeName="HealthCareDBModel1.DoctorNew">
-        <MappingFragment StoreEntitySet="DoctorNew">
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="DoctorFullName" ColumnName="DoctorFullName" />
-          <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

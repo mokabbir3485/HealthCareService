@@ -36,10 +36,7 @@ namespace HealthCareServiceUI.Models
         public virtual DbSet<Presciption> Presciptions { get; set; }
         public virtual DbSet<PresciptionDetail> PresciptionDetails { get; set; }
         public virtual DbSet<ProfessionalDetail> ProfessionalDetails { get; set; }
-        public virtual DbSet<SiteUser> SiteUsers { get; set; }
-        public virtual DbSet<SiteAdmin> SiteAdmins { get; set; }
-        public virtual DbSet<SitePatient> SitePatients { get; set; }
-        public virtual DbSet<DoctorNew> DoctorNews { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     
         public virtual int AddBrand(string brandName)
         {

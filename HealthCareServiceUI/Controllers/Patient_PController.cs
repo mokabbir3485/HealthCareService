@@ -11,6 +11,7 @@ using HealthCareServiceUI.Models;
 
 namespace HealthCareServiceUI.Controllers
 {
+    [Authorize]
     public class Patient_PController : ApiController
     {
         public int Patient_id;
@@ -26,6 +27,7 @@ namespace HealthCareServiceUI.Controllers
 
         // GET: api/Patient_P
         //HealthCareDBEntities1 hd = new HealthCareDBEntities1();
+        [Authorize]
         [HttpGet]
         public IHttpActionResult getpatient_pdetails()
         {

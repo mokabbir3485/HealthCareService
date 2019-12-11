@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HealthCareDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
   <EntityType Name="Brand">
     <Key>
       <PropertyRef Name="Brand_id" />
@@ -29,17 +46,6 @@
     <Property Name="DOB" Type="date" Nullable="false" />
     <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="DoctorNew">
-    <Key>
-      <PropertyRef Name="Doctor_id" />
-    </Key>
-    <Property Name="Doctor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DoctorFullName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
-    <Property Name="DOB" Type="date" />
-    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Drug">
     <Key>
@@ -105,37 +111,6 @@
     <Property Name="Pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Doctor_id" Type="int" Nullable="false" />
     <Property Name="Specialization" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="SiteAdmin">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar" MaxLength="50" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
-    <Property Name="IsValid" Type="bit" />
-  </EntityType>
-  <EntityType Name="SitePatient">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar" MaxLength="50" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
-    <Property Name="IsValid" Type="bit" />
-  </EntityType>
-  <EntityType Name="SiteUser">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar" MaxLength="50" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
-    <Property Name="IsValid" Type="bit" />
-    <Property Name="role_id" Type="int" />
   </EntityType>
   <Association Name="FK_DocEducation_Doctor_P">
     <End Role="Doctor_P" Type="Self.Doctor_P" Multiplicity="1" />
@@ -281,19 +256,16 @@
     <Parameter Name="Email" Type="nvarchar" Mode="In" />
   </Function>
   <EntityContainer Name="HealthCareDBModel1StoreContainer">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DocEducation" EntityType="Self.DocEducation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Doctor_P" EntityType="Self.Doctor_P" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DoctorNew" EntityType="Self.DoctorNew" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Drug" EntityType="Self.Drug" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Generic" EntityType="Self.Generic" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Patient_P" EntityType="Self.Patient_P" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Presciption" EntityType="Self.Presciption" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PresciptionDetail" EntityType="Self.PresciptionDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProfessionalDetails" EntityType="Self.ProfessionalDetails" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SiteAdmin" EntityType="Self.SiteAdmin" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SitePatient" EntityType="Self.SitePatient" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SiteUser" EntityType="Self.SiteUser" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_DocEducation_Doctor_P" Association="Self.FK_DocEducation_Doctor_P">
       <End Role="Doctor_P" EntitySet="Doctor_P" />
       <End Role="DocEducation" EntitySet="DocEducation" />

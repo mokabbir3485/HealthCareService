@@ -12,6 +12,7 @@ using HealthCareServiceUI.Models;
 
 namespace HealthCareServiceUI.Controllers
 {
+    [Authorize]
     public class DocEducationController : ApiController
     {
         private HealthCareDBEntities1 db = new HealthCareDBEntities1();

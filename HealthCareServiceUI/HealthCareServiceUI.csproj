@@ -249,41 +249,27 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
-    <Compile Include="Controllers\BrandMVCController.cs" />
     <Compile Include="Controllers\DocEducationController.cs" />
-    <Compile Include="Controllers\DocEducationMVCController.cs" />
     <Compile Include="Controllers\DoctorJoinTablesController.cs" />
-    <Compile Include="Controllers\DoctorJointablesMVCController.cs" />
-    <Compile Include="Controllers\DoctorNewController.cs" />
     <Compile Include="Controllers\Doctor_PController.cs" />
-    <Compile Include="Controllers\Doctor_PMVCController.cs" />
     <Compile Include="Controllers\DrugController.cs" />
     <Compile Include="Controllers\DrugJoinTablesController.cs" />
-    <Compile Include="Controllers\DrugJoinTablesMVCController.cs" />
-    <Compile Include="Controllers\DrugMVCController.cs" />
     <Compile Include="Controllers\GenericController.cs" />
-    <Compile Include="Controllers\GenericMVCController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Patient_PController.cs" />
-    <Compile Include="Controllers\Patient_PMVCController.cs" />
     <Compile Include="Controllers\PresciptionController.cs" />
     <Compile Include="Controllers\PresciptionDetailController.cs" />
-    <Compile Include="Controllers\PresciptionDetailMVCController.cs" />
     <Compile Include="Controllers\PresciptionJoinTablesController.cs" />
-    <Compile Include="Controllers\PresciptionJoinTablesMVCController.cs" />
-    <Compile Include="Controllers\PresciptionMVCController.cs" />
     <Compile Include="Controllers\ProfessionalDetailController.cs" />
-    <Compile Include="Controllers\ProfessionalDetailMVCController.cs" />
-    <Compile Include="Controllers\RegisterAdminController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
-    <Compile Include="Controllers\RegisterPatientController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Facebook\FacebookBackChangelHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>PrescriptionModel2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Brand.cs">
       <DependentUpon>PrescriptionModel2.tt</DependentUpon>
     </Compile>
@@ -324,9 +310,6 @@
       <DependentUpon>PrescriptionModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoctorJoinTables_Result1.cs">
-      <DependentUpon>PrescriptionModel2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DoctorNew.cs">
       <DependentUpon>PrescriptionModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Doctor_P.cs">
@@ -382,15 +365,6 @@
       <DependentUpon>PrescriptionModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfessionalDetailModel.cs" />
-    <Compile Include="Models\SiteAdmin.cs">
-      <DependentUpon>PrescriptionModel2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SitePatient.cs">
-      <DependentUpon>PrescriptionModel2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SiteUser.cs">
-      <DependentUpon>PrescriptionModel2.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -504,69 +478,9 @@
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Home\IndexPatient.cshtml" />
     <Content Include="Views\Home\EditPatient.cshtml" />
-    <Content Include="Views\DoctorJointablesMVC\Index.cshtml" />
-    <Content Include="Views\DrugJoinTablesMVC\Index.cshtml" />
-    <Content Include="Views\PresciptionJoinTablesMVC\Index.cshtml" />
-    <Content Include="Views\Doctor_PMVC\Index.cshtml" />
-    <Content Include="Views\Doctor_PMVC\AddIndex.cshtml" />
-    <Content Include="Views\ProfessionalDetailMVC\Index.cshtml" />
-    <Content Include="Views\ProfessionalDetailMVC\IndexList.cshtml" />
-    <Content Include="Views\Patient_PMVC\AddIndex.cshtml" />
-    <Content Include="Views\Patient_PMVC\Index.cshtml" />
-    <Content Include="Views\BrandMVC\Index.cshtml" />
-    <Content Include="Views\BrandMVC\AddIndex.cshtml" />
-    <Content Include="Views\GenericMVC\Index.cshtml" />
-    <Content Include="Views\GenericMVC\AddIndex.cshtml" />
-    <Content Include="Views\DocEducationMVC\IndexList.cshtml" />
-    <Content Include="Views\DocEducationMVC\Index.cshtml" />
-    <Content Include="Views\PresciptionMVC\IndexList.cshtml" />
-    <Content Include="Views\PresciptionMVC\Index.cshtml" />
-    <Content Include="Views\DrugMVC\IndexList.cshtml" />
-    <Content Include="Views\DrugMVC\Index.cshtml" />
-    <Content Include="Views\PresciptionDetailMVC\IndexList.cshtml" />
-    <Content Include="Views\PresciptionDetailMVC\Index.cshtml" />
-    <Content Include="Views\PresciptionDetailMVC\Delete.cshtml" />
-    <Content Include="Views\BrandMVC\Delete.cshtml" />
-    <Content Include="Views\DocEducationMVC\Delete.cshtml" />
-    <Content Include="Views\Doctor_PMVC\Delete.cshtml" />
-    <Content Include="Views\DrugMVC\Delete.cshtml" />
-    <Content Include="Views\GenericMVC\Delete.cshtml" />
-    <Content Include="Views\Patient_PMVC\Delete.cshtml" />
-    <Content Include="Views\PresciptionMVC\Delete.cshtml" />
-    <Content Include="Views\ProfessionalDetailMVC\Delete.cshtml" />
-    <Content Include="Views\BrandMVC\Details.cshtml" />
-    <Content Include="Views\DocEducationMVC\Details.cshtml" />
-    <Content Include="Views\Doctor_PMVC\Details.cshtml" />
-    <Content Include="Views\DrugMVC\Details.cshtml" />
-    <Content Include="Views\GenericMVC\Details.cshtml" />
-    <Content Include="Views\Patient_PMVC\Details.cshtml" />
-    <Content Include="Views\PresciptionMVC\Details.cshtml" />
-    <Content Include="Views\PresciptionDetailMVC\Details.cshtml" />
-    <Content Include="Views\ProfessionalDetailMVC\Details.cshtml" />
-    <Content Include="Views\Patient_PMVC\Edit.cshtml" />
-    <Content Include="Views\BrandMVC\Edit.cshtml" />
-    <Content Include="Views\DocEducationMVC\Edit.cshtml" />
-    <Content Include="Views\Doctor_PMVC\Edit.cshtml" />
-    <Content Include="Views\DrugMVC\Edit.cshtml" />
-    <Content Include="Views\GenericMVC\Edit.cshtml" />
-    <Content Include="Views\PresciptionDetailMVC\Edit.cshtml" />
-    <Content Include="Views\PresciptionMVC\Edit.cshtml" />
-    <Content Include="Views\ProfessionalDetailMVC\Edit.cshtml" />
-    <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\Register\AfterLogin.cshtml" />
-    <Content Include="Views\Register\Text.cshtml" />
     <Content Include="Views\Shared\_LayoutDash.cshtml" />
-    <Content Include="Views\Register\Confirm.cshtml" />
-    <Content Include="Views\RegisterPatient\Index.cshtml" />
-    <Content Include="Views\RegisterPatient\AfterLogin.cshtml" />
-    <Content Include="Views\RegisterPatient\Confirm.cshtml" />
-    <Content Include="Views\RegisterPatient\Text.cshtml" />
     <Content Include="Views\Shared\_LayoutPatient.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\RegisterAdmin\Index.cshtml" />
-    <Content Include="Views\RegisterAdmin\Text.cshtml" />
-    <Content Include="Views\RegisterAdmin\AfterLogin.cshtml" />
-    <Content Include="Views\RegisterAdmin\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

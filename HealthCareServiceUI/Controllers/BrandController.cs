@@ -11,6 +11,7 @@ using HealthCareServiceUI.Models;
 
 namespace HealthCareServiceUI.Controllers
 {
+    [Authorize]
     public class BrandController : ApiController
     {
 

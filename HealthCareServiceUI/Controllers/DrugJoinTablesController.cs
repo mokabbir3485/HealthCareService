@@ -8,6 +8,7 @@ using HealthCareServiceUI.Models;
 
 namespace HealthCareServiceUI.Controllers
 {
+    [Authorize]
     public class DrugJoinTablesController : ApiController
     {
         public IHttpActionResult getjointables()

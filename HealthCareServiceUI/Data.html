@@ -66,7 +66,7 @@
             if (sessionStorage.getItem('accessToken') == null) {
                 window.location.href = "Login.html";
             }
-            $('#spanUsername').text('Hello ' + localStorage.getItem('userName'));
+            $('#spanUsername').text('Hello ' + sessionStorage.getItem('userName'));
 
             $('#btnLogoff').click(function () {
                 sessionStorage.removeItem('accessToken');
